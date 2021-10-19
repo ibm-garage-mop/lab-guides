@@ -4,16 +4,13 @@
 
 The first section will cover logging into the OCP server and navigating the interface.
 
-1.	Add the following lines to you local machine’s hosts file to resolve names.
-For windows, it is C:\Windows\System32\drivers\etc\hosts
+1.	Open the Firefox web browser and open the web console URL.
 
-10.0.190.99	console-openshift-console.apps.radar-5.imho.blue
-10.0.190.99 	oauth-openshift.apps.radar-5.imho.blue
+2.	Select the htpasswd authentication method.
 
-2.	Open the Firefox web browser
-https://console-openshift-console.apps.radar-5.imho.blue/
+![Login screen](images/1.png)
 
-3.	Select the htpasswd authentication method.
+3. Use the user id and password to login
 
 #	Deploy an existing image from Red Hat Quay
 
@@ -39,24 +36,41 @@ Docker tags convey useful information about a specific image version/variant. It
 
 A project is a Kubernetes namespace with additional annotations and is the central vehicle by which access to resources for regular users is managed. A project allows a community of users to organize and manage their content in isolation from other communities.
 
-Click Create Project to create a new project for your user.
+1. Open the `Projects` tab
 
-Enter Name: sushiweb
-Click “Create”
+![Projects tab](images/2.png)
+
+2. Click `Create Project` to create a new project for your user.
+
+![Projects tab](images/3.png)
+
+3. Enter the project name: sushiweb
+
+4. Click `Create`
 
 ##	Deploy the docker image
 
-Switch to Developer view. click Developer.
+1. Switch to Developer view. click `Developer`.
 
-Click Add and select Container Image
+![Developer tab](images/4.png)
 
-Check the “Image Name from external registry” box and enter: `quay.io/schabrolles/sushiweb` for the image name.
+2. Click `Add` and select `Container Images`
 
-Scroll down and enter `sushiweb-app` for the “Application Name” and enter `sushiweb` for the “Name”, uncheck “Create a route to the application” box (It’s checked by default), we will create it later then click “Create”.
+![Container images](images/5.png)
 
-Click on `Sushiweb` to check the deployment status.
+3. Check the `Image Name from external registry` field and enter: `quay.io/schabrolles/sushiweb` for the image name.
 
-Check that the pod is in “Running” status.
+![image](images/6.png)
+
+4. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`reate a route to the application` box (It’s checked by default), we will create it later then click `Create`.
+
+5. Click on `Sushiweb` to check the deployment status.
+
+![image](images/7.png)
+
+6. Check that the pod is in `Running` status.
+
+![image](images/8.png)
 
 ## Create a route to reach the website
 
@@ -70,19 +84,26 @@ A Kubernetes service serves as an internal load balancer. It identifies a set of
 
 An OpenShift route is a way to expose a service by giving it an externally-reachable hostname like www.example.com, so that external clients can reach it by name. In OCP cluster, the route is created by the administrator. It runs an HAProxy on Infrastructure Node. This proxy associates a user-chosen hostname with the relevant service for the application we want to access.
 
-3.	Switch to Administrator view. click Administrator to create a route to allow incoming network access to your pod:
+1.	Switch back to `Administrator` view. click `Administrator` to create a route to allow incoming network access to your pod:
 
-Click on “Create Route”
+![image](images/9.png)
 
-Set the Name to `sushiweb`, the Hostname to `sushiweb.10.0.190.92.nip.io`, select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
+2. Click on the `Create Route`button
 
-Scroll down to display the buttons and click `Create`.
+3. Set the Name to `sushiweb`, the Hostname to `sushiweb.10.0.190.92.nip.io`, select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
 
-Check for the `Accepted` status.
+![image](images/10.png)
+
+4. Scroll down to display the buttons and click `Create`.
+
+5. Check for the `Accepted` status.
 
 You can click the route link http://sushiweb.10.0.190.99.nip.io to validate the application is serving http request.
 
 You will be connected to the sushiweb website.
 
-This conclude the first part of the demonstration
+![image](images/11.png)
+
+This conclude the first part of the hands-on lab.
+
 You have successfully deployed a container built by a user from an external public container registry on your OpenShift cluster.
