@@ -9,28 +9,39 @@ The Sushiweb website sources are hosted on Github, you can check the directory s
 
 As you can see, this project contains a Dockerfile file describing how to build the image of the application. Openshift can automatically run this file, build a container image and push it to its private registry.
 
+![image](images/1.png)
+
 #	Build a website container from Dockerfile
 
 ## Create a new project
-First, go back to the Create Project page by clicking Developer, select Project: `sushiweb`
 
-*	Click Create Project
+1. First, go back to the `Developer`view
 
-Enter Name “sushiweb-sources” and  click “Create”
+2. Select Project: `sushiweb` and click  `Create Project`
+
+![image](images/2.png)
+
+3. Enter Name `sushiweb-sources` and  click `Create`
 
 ## Create an OpenShift deployment from Github source code
 
-*	Click `+Add` and `From Dockerfile`
+1.	Click `+Add` and `From Dockerfile`
+
+![image](images/3.png)
 
 Enter `https://github.com/geoffrey-pascal/sushiweb` for the Git Repo URL.
 
-Scroll down, enter sushiweb-sources for the Name and click `Routing`:
+2. Click `Show advanced Git options` and put `ubi8` in the `Git reference` field
 
-Set the hostname to `sushiweb-sources.10.0.190.99.nip.io` and Click  `Create`.
+3. Scroll down, set the name to `sushiweb-sources` and click `Create`.
 
-* Click on `sushiweb-sources` to check the Deployment status
+4. Click on `sushiweb-sources` to check the Deployment status
 
-When the pod is in Running state, click the link to the route, check your website availability:
+![image](images/5.png)
+
+When the pod is in `Running`. state, click the link to the route, check your website availability:
+
+![image](images/7.png)
 
 You will be connected to the deployed web site.
 
@@ -38,15 +49,19 @@ You will be connected to the deployed web site.
 
 1.	In the OpenShift web console, click `Developer / Topology` in the left Pane.
 
-* Click on `sushiweb-sources` to display the Deployment, select the Details tab.
+![image](images/6.png)
+
+2. Click on `sushiweb-sources` to display the Deployment, select the `Details` tab.
 
 Now Scale your application from 1 pod to 3 pods
 
-When all pods are ready observe the following icon:
+![image](images/8.png)
 
-2.	Switch to the “Resources” tab:
+3.	Switch to the `Resources` tab:
 
 You should now see 3 pods deployed and can access to the logs of each pod:
+
+![image](images/9.png)
 
 You can see your 3 pods are serving requests in parallel.
 
@@ -56,18 +71,26 @@ Let’s say a developer has created a new version of Sushiweb v1.0 and your job 
 
 Check GitHub to discover the new branch: https://github.com/geoffrey-pascal/sushiweb/branches
 
-* Click on `Developer / Builds` and select the `sushiweb-sources` build.
+1. Click on `Builds` and select the `sushiweb-sources` build.
 
-* Click “Edit Build Config” in the upper right corner:
+2. Click `Edit Build Config` in the upper right corner:
 
-The git field contains the URI to the remote Git repository of the source code, to check out a specific Git add a line `ref: v1.0` after the `uri: 'https://github.com/geoffrey-pascal/sushiweb'`, This branch contains the new development version of Sushiweb, click “Save”
+![image](images/10.png)
 
-* Click “Start build” to start the build process again:
+3. The git field contains the URI to the remote Git repository of the source code, to check out a specific Git add a line `ref: v1.0` after the `uri: 'https://github.com/geoffrey-pascal/sushiweb'`, This branch contains the new development version of Sushiweb, click `Save`
 
-In the OpenShift web console, click “Developer / Topology” in the left Pane
+![image](images/11.png)
 
-Click on `sushiweb-sources` to display the sushiweb-sources Deployment, select the Resources tab.
+4. Click `Start build` to start the build process again:
 
-There are 2 Build in complete status, click on View logs to see the log stream.
+![image](images/12.png)
+
+In the OpenShift web console, click `Topology` in the left pane.
+
+Click on `sushiweb-sources` to display the sushiweb-sources Deployment, select the `Resources` tab.
+
+There are 2 Builds in complete status, click on `View logs` to see the log stream.
+
+![image](images/13.png)
 
 Check the new website deployed. You may need to refresh your browser cache to see the updated content (The headings of the website should be displayed in blue).
