@@ -90,7 +90,7 @@ An OpenShift route is a way to expose a service by giving it an externally-reach
 
 2. Click on the `Create Route`button
 
-3. Set the Name to `sushiweb`, the Hostname to `sushiweb.10.0.190.92.nip.io`, select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
+3. Set the Name to `sushiweb`, the Hostname to `sushiweb.apps.grey.edu.ihost.com`, select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
 
 ![image](images/10.png)
 
