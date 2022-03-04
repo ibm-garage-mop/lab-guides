@@ -27,7 +27,7 @@ As you can see, this project contains a Dockerfile file describing how to build 
 
 1.	Click `+Add` and `From Dockerfile`
 
-![image](images/3.png)
+![image](https://user-images.githubusercontent.com/91945915/156799739-a24c8507-30d0-48c4-bffa-66e19ea53e0e.png)
 
 Enter `https://github.com/geoffrey-pascal/sushiweb` for the Git Repo URL.
 
