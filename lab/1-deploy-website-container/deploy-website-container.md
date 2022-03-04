@@ -62,7 +62,7 @@ A project is a Kubernetes namespace with additional annotations and is the centr
 
 ![image](images/6.png)
 
-4. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`reate a route to the application` box (It’s checked by default), we will create it later then click `Create`.
+4. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`Create a route to the application` box (It’s checked by default), we will create it later then click `Create`.
 
 5. Click on `Sushiweb` to check the deployment status.
 
