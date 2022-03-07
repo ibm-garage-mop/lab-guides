@@ -40,11 +40,12 @@ A project is a Kubernetes namespace with additional annotations and is the centr
 
 ![image](https://user-images.githubusercontent.com/91945915/157018606-ee949e7a-5084-4349-b553-d503d963f8f2.png)
 
-2. Switch back to the `Developer` view. Click on `Topology`.
+2. Make sure a project named `userX-sushi` has been assigned to your user account. 
 
 ![image](https://user-images.githubusercontent.com/91945915/157017060-f9910625-5991-4ac1-9430-998f4220f24a.png)
 
-3. Seletc the project `userX-sushi`. There should be no deployments under this project yet.
+3. Switch back to the `Developer` view, click on `Topology` and select the project `userX-sushi`. 
+   There should be no deployments under this project yet.
 
 ![image](https://user-images.githubusercontent.com/91945915/157017348-f7f985d2-f5db-4119-a084-1887dcc2f820.png)
 
