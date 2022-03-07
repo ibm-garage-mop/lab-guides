@@ -36,25 +36,21 @@ Docker tags convey useful information about a specific image version/variant. It
 
 A project is a Kubernetes namespace with additional annotations and is the central vehicle by which access to resources for regular users is managed. A project allows a community of users to organize and manage their content in isolation from other communities.
 
-1. Open the `Projects` tab
+1. In the developer view, go to `Topology` and select `All Projects` to get a list of all your assigned projects.
 
-![Projects tab](images/2.png)
+![image](https://user-images.githubusercontent.com/91945915/157016666-5a334e89-74ed-4431-a235-9fbecf505e94.png)
 
-2. Click `Create Project` to create a new project for your user.
+2. Search for the project named `userX-sushi` and click on the project name. 
 
-![Projects tab](images/3.png)
+![image](https://user-images.githubusercontent.com/91945915/157017060-f9910625-5991-4ac1-9430-998f4220f24a.png)
 
-3. Enter the project name: sushiweb
+3. There should be no deployments under this project yet.
 
-4. Click `Create`
+![image](https://user-images.githubusercontent.com/91945915/157017348-f7f985d2-f5db-4119-a084-1887dcc2f820.png)
 
 ##	Deploy the docker image
 
-1. Switch to Developer view. click `Developer`.
-
-![Developer tab](images/4.png)
-
-2. Click `Add` and select `Container Images`
+1. In the Developer view, `Add` and select `Container Images`
 
 ![Container images](images/5.png)
 
