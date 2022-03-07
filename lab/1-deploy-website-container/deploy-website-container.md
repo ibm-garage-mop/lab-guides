@@ -32,7 +32,7 @@ Docker tags convey useful information about a specific image version/variant. It
 
 2.	Click the “Tags” tab and inspect the tags available for this image. You will deploy the image with the tag “1:0”.
 
-##	Create your Openshift project
+##	Find your Openshift project
 
 A project is a Kubernetes namespace with additional annotations and is the central vehicle by which access to resources for regular users is managed. A project allows a community of users to organize and manage their content in isolation from other communities.
 
