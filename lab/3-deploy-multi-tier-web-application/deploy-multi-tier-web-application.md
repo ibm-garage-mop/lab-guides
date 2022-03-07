@@ -74,6 +74,8 @@ The NodeJS application requires the credentials to connect to the MongoDB databa
 
 9. Click the `mongodb`secret.
 
+![image](https://user-images.githubusercontent.com/91945915/157041693-cd8ba696-221a-4bf8-9d94-baa8876cdabd.png)
+
 10. Add this secret to the NodeJS application by click on `Add Secret to workload`
 
 11. Select `letschat` in the workload list and click `Save`
