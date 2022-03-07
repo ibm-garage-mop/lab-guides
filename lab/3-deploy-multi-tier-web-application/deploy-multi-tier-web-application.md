@@ -11,7 +11,7 @@ You can get an overview of the app in the Github project: https://github.com/geo
 
 2. Select project `user1-chat`
 
-![image](https://user-images.githubusercontent.com/91945915/157038181-0e34f8d9-62a2-4169-b45c-5989d14fae69.png)
+![image](images/1.png)
 
 
 ## Deploy MongoDB
@@ -74,13 +74,13 @@ The NodeJS application requires the credentials to connect to the MongoDB databa
 
 9. Click the `mongodb`secret.
 
-![image](https://user-images.githubusercontent.com/91945915/157041693-cd8ba696-221a-4bf8-9d94-baa8876cdabd.png)
+![image](images/10.png)
 
 10. Add this secret to the NodeJS application by click on `Add Secret to workload`
 
 11. Select `letschat` in the workload list and click `Save`
 
-![image](images/10.png)
+![image](images/11.png)
 
 12. When the application deployment is completed `Build #1 is complete`, try to connect to the application by clicking on the Open URL button from the `Topology` view.
 
@@ -90,11 +90,11 @@ The NodeJS application requires the credentials to connect to the MongoDB databa
 
 14. Click `I need an account`
 
-![image](images/11.png)
+![image](images/12.png)
 
 15. Set dummies values for the account, remember the username and the password you will need to login into the application and click `Register`
 
-![image](images/12.png)
+![image](images/13.png)
 
 16. Try to login with your username and password.
 
