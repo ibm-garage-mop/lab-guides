@@ -38,16 +38,16 @@ A project is a Kubernetes namespace with additional annotations and is the centr
 
 1. Select the `Administrator` view and select `Projects` to get a full list of all your assigned projects.
 
-![image](https://user-images.githubusercontent.com/91945915/157018606-ee949e7a-5084-4349-b553-d503d963f8f2.png)
+![Login screen](images/2.png)
 
 2. Make sure a project named `userX-sushi` has been assigned to your user account. 
 
-![image](https://user-images.githubusercontent.com/91945915/157017060-f9910625-5991-4ac1-9430-998f4220f24a.png)
+![Login screen](images/3.png)
 
 3. Switch back to the `Developer` view, click on `Topology` and select the project `userX-sushi`. 
    There should be no deployments under this project yet.
 
-![image](https://user-images.githubusercontent.com/91945915/157022234-d56d6380-0ebe-4c15-814d-aef5d685e8aa.png)
+![Login screen](images/4.png)
 
 ##	Deploy the docker image
 
@@ -92,15 +92,15 @@ An OpenShift route is a way to expose a service by giving it an externally-reach
 4. Set the Hostname to `sushiweb-userX.apps.<cluster URL>`. The cluster URL is the domain part behind `apps`.
 
 
-![image](https://user-images.githubusercontent.com/91945915/157024296-0a604ae4-4a69-4284-b4c6-b55ffe815b49.png)
+![image](images/10.png)
 
    For example `sushiweb-user1.apps.jade.edu.ihost.com`.
    
- ![image](https://user-images.githubusercontent.com/91945915/157025231-5d29895a-ffe4-4f72-9462-fc379cd036f2.png)
+ ![image](images/11.png)
 
 5. Select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
 
-![image](images/10.png)
+![image](images/12.png)
 
 6. Scroll down to display the buttons and click `Create`.
 
@@ -110,7 +110,7 @@ You can click the route link to validate the application is serving http request
 
 You will be connected to the sushiweb website.
 
-![image](https://user-images.githubusercontent.com/91945915/157028370-c63296ab-5320-4ed3-aadf-ee0a27c28eec.png)
+![image](images/13.png)
 
 
 This conclude the first part of the hands-on lab.
