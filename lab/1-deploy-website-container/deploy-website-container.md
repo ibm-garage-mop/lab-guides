@@ -36,11 +36,11 @@ Docker tags convey useful information about a specific image version/variant. It
 
 A project is a Kubernetes namespace with additional annotations and is the central vehicle by which access to resources for regular users is managed. A project allows a community of users to organize and manage their content in isolation from other communities.
 
-1. In the developer view, go to `Topology` and select `All Projects` to get a list of all your assigned projects.
+1. Select the `Administrator` view and select `Projects` to get a list of all your assigned projects.
 
-![image](https://user-images.githubusercontent.com/91945915/157016666-5a334e89-74ed-4431-a235-9fbecf505e94.png)
+![image](https://user-images.githubusercontent.com/91945915/157018606-ee949e7a-5084-4349-b553-d503d963f8f2.png)
 
-2. Search for the project named `userX-sushi` and click on the project name. 
+2. Switch back to the `Developer` view and select the project named `userX-sushi` and click on the project name. 
 
 ![image](https://user-images.githubusercontent.com/91945915/157017060-f9910625-5991-4ac1-9430-998f4220f24a.png)
 
