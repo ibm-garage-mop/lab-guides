@@ -106,11 +106,11 @@ An OpenShift route is a way to expose a service by giving it an externally-reach
 
 7. Check for the `Accepted` status.
 
-You can click the route link http://sushiweb.10.0.190.99.nip.io to validate the application is serving http request.
+You can click the route link to validate the application is serving http request.
 
 You will be connected to the sushiweb website.
 
-![image](images/11.png)
+![image](https://user-images.githubusercontent.com/91945915/157026982-ee1bb22c-e5bb-44cf-952a-b1edef18e5f9.png)
 
 This conclude the first part of the hands-on lab.
 
