@@ -47,7 +47,7 @@ A project is a Kubernetes namespace with additional annotations and is the centr
 3. Switch back to the `Developer` view, click on `Topology` and select the project `userX-sushi`. 
    There should be no deployments under this project yet.
 
-![image](https://user-images.githubusercontent.com/91945915/157017348-f7f985d2-f5db-4119-a084-1887dcc2f820.png)
+![image](https://user-images.githubusercontent.com/91945915/157022234-d56d6380-0ebe-4c15-814d-aef5d685e8aa.png)
 
 ##	Deploy the docker image
 
