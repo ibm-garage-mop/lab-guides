@@ -50,21 +50,21 @@ A project is a Kubernetes namespace with additional annotations and is the centr
 
 ##	Deploy the docker image
 
-1. In the Developer view, `Add` and select `Container Images`
+1. In the Developer view, click `Add` and select `Container Images`
 
 ![Container images](images/5.png)
 
-3. Check the `Image Name from external registry` field and enter: `quay.io/schabrolles/sushiweb` for the image name.
+2. Check the `Image Name from external registry` field and enter: `quay.io/schabrolles/sushiweb` for the image name.
 
 ![image](images/6.png)
 
-4. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`Create a route to the application` box (It’s checked by default), we will create it later then click `Create`.
+3. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`Create a route to the application` box (It’s checked by default), we will create it later then click `Create`.
 
-5. Click on `Sushiweb` to check the deployment status.
+4. Click on `Sushiweb` to check the deployment status.
 
 ![image](images/7.png)
 
-6. Check that the pod is in `Running` status.
+5. Check that the pod is in `Running` status.
 
 ![image](images/8.png)
 
