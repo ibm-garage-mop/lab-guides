@@ -13,15 +13,14 @@ As you can see, this project contains a Dockerfile file describing how to build 
 
 #	Build a website container from Dockerfile
 
-## Create a new project
+## Select a new project
 
-1. First, go back to the `Developer`view
+1. First, go back to the `Developer`view and then `Topology`.
 
-2. Select Project: `sushiweb` and click  `Create Project`
+2. Select Project: `sushiweb-sources` and click  `Create Project`
 
-![image](images/2.png)
+![image](https://user-images.githubusercontent.com/91945915/157028967-06ecca81-a8cd-4c09-a857-466bc7cc84bd.png)
 
-3. Enter Name `sushiweb-sources` and  click `Create`
 
 ## Create an OpenShift deployment from Github source code
 
