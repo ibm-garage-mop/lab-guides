@@ -110,7 +110,8 @@ You can click the route link to validate the application is serving http request
 
 You will be connected to the sushiweb website.
 
-![image](https://user-images.githubusercontent.com/91945915/157026982-ee1bb22c-e5bb-44cf-952a-b1edef18e5f9.png)
+![image](https://user-images.githubusercontent.com/91945915/157028370-c63296ab-5320-4ed3-aadf-ee0a27c28eec.png)
+
 
 This conclude the first part of the hands-on lab.
 
