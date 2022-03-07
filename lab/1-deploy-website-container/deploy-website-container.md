@@ -87,13 +87,24 @@ An OpenShift route is a way to expose a service by giving it an externally-reach
 
 2. Click on the `Create Route`button
 
-3. Set the Name to `sushiweb`, the Hostname to `sushiweb.apps.grey.edu.ihost.com`, select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
+3. Set the Name to `sushiweb-userX` (where X is your user ID).
+
+4. Set the Hostname to `sushiweb-userX.apps.<cluster URL>`. The cluster URL is the domain part behind `apps`.
+
+
+![image](https://user-images.githubusercontent.com/91945915/157024296-0a604ae4-4a69-4284-b4c6-b55ffe815b49.png)
+
+   For example `sushiweb-user1.apps.jade.edu.ihost.com`.
+   
+ ![image](https://user-images.githubusercontent.com/91945915/157025231-5d29895a-ffe4-4f72-9462-fc379cd036f2.png)
+
+5. Select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
 
 ![image](images/10.png)
 
-4. Scroll down to display the buttons and click `Create`.
+6. Scroll down to display the buttons and click `Create`.
 
-5. Check for the `Accepted` status.
+7. Check for the `Accepted` status.
 
 You can click the route link http://sushiweb.10.0.190.99.nip.io to validate the application is serving http request.
 
