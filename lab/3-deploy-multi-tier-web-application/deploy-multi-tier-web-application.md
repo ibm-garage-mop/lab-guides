@@ -5,15 +5,14 @@ You can get an overview of the app in the Github project: https://github.com/geo
 
 #	Deploy a multi-tier Application composed of NodeJS application and a MongoDB backend
 
-## Create a new project
+## Select a project
 
-1. First, go back to the `Topology` view.
+1. First, go back to the `Topology` view and select `Topology`
 
-2. Click `Create new project`
+2. Select project `user1-chat`
 
-![image](images/1.png)
+![image](https://user-images.githubusercontent.com/91945915/157038181-0e34f8d9-62a2-4169-b45c-5989d14fae69.png)
 
-3. Enter Name `letschat` and  click `Create`
 
 ## Deploy MongoDB
 
