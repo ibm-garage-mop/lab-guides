@@ -19,7 +19,7 @@ As you can see, this project contains a Dockerfile file describing how to build 
 
 2. Ensure, the project: `user1-sushi` is selected.
 
-![image](https://user-images.githubusercontent.com/91945915/157029630-1c810aa3-1ea3-4339-8d5d-e3e4bfd9b838.png)
+![image](images/2.png)
 
 
 
@@ -27,7 +27,7 @@ As you can see, this project contains a Dockerfile file describing how to build 
 
 1.	Click `+Add` and `From Dockerfile`
 
-![image](https://user-images.githubusercontent.com/91945915/156800399-318ae0d8-d611-467a-afa9-6f66956815eb.png)
+![image](images/3.png)
 
 Enter `https://github.com/geoffrey-pascal/sushiweb` for the Git Repo URL.
 
