@@ -77,7 +77,7 @@ Check GitHub to discover the new branch: https://github.com/geoffrey-pascal/sush
 
 ![image](images/10.png)
 
-3. The git field contains the URI to the remote Git repository of the source code, to check out a specific Git add a line `ref: v1.0` after the `uri: 'https://github.com/geoffrey-pascal/sushiweb'`, This branch contains the new development version of Sushiweb, click `Save`
+3. The git field contains the URI to the remote Git repository of the source code, to check out a specific Git replace add a line ´ref: ubi8` by  `ref: v1.0` after the `uri: 'https://github.com/geoffrey-pascal/sushiweb'`. This branch contains the new development version of Sushiweb, click `Save`
 
 ![image](images/11.png)
 
