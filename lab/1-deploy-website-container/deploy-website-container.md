@@ -32,43 +32,40 @@ Docker tags convey useful information about a specific image version/variant. It
 
 2.	Click the “Tags” tab and inspect the tags available for this image. You will deploy the image with the tag “1:0”.
 
-##	Create your Openshift project
+##	Find your Openshift project
 
 A project is a Kubernetes namespace with additional annotations and is the central vehicle by which access to resources for regular users is managed. A project allows a community of users to organize and manage their content in isolation from other communities.
 
-1. Open the `Projects` tab
+1. Select the `Administrator` view and select `Projects` to get a full list of all your assigned projects.
 
-![Projects tab](images/2.png)
+![Login screen](images/2.png)
 
-2. Click `Create Project` to create a new project for your user.
+2. Make sure a project named `userX-sushi` has been assigned to your user account. 
 
-![Projects tab](images/3.png)
+![Login screen](images/3.png)
 
-3. Enter the project name: sushiweb
+3. Switch back to the `Developer` view, click on `Topology` and select the project `userX-sushi`. 
+   There should be no deployments under this project yet.
 
-4. Click `Create`
+![Login screen](images/4.png)
 
 ##	Deploy the docker image
 
-1. Switch to Developer view. click `Developer`.
-
-![Developer tab](images/4.png)
-
-2. Click `Add` and select `Container Images`
+1. In the Developer view, click `Add` and select `Container Images`
 
 ![Container images](images/5.png)
 
-3. Check the `Image Name from external registry` field and enter: `quay.io/schabrolles/sushiweb` for the image name.
+2. Check the `Image Name from external registry` field and enter: `quay.io/schabrolles/sushiweb` for the image name.
 
 ![image](images/6.png)
 
-4. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`reate a route to the application` box (It’s checked by default), we will create it later then click `Create`.
+3. Scroll down and enter `sushiweb-app` for the `Application Name` and enter `sushiweb` for the `Name`, uncheck “`Create a route to the application` box (It’s checked by default), we will create it later then click `Create`.
 
-5. Click on `Sushiweb` to check the deployment status.
+4. Click on `Sushiweb` to check the deployment status.
 
 ![image](images/7.png)
 
-6. Check that the pod is in `Running` status.
+5. Check that the pod is in `Running` status.
 
 ![image](images/8.png)
 
@@ -90,19 +87,31 @@ An OpenShift route is a way to expose a service by giving it an externally-reach
 
 2. Click on the `Create Route`button
 
-3. Set the Name to `sushiweb`, the Hostname to `sushiweb.apps.grey.edu.ihost.com`, select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
+3. Set the Name to `sushiweb-userX` (where X is your user ID).
+
+4. Set the Hostname to `sushiweb-userX.apps.<cluster URL>`. The cluster URL is the domain part behind `apps`.
+
 
 ![image](images/10.png)
 
-4. Scroll down to display the buttons and click `Create`.
+   For example `sushiweb-user1.apps.jade.edu.ihost.com`.
+   
+ ![image](images/11.png)
 
-5. Check for the `Accepted` status.
+5. Select the `sushiweb` Service and Target Port to 8080 -> 8080 (TCP).
 
-You can click the route link http://sushiweb.10.0.190.99.nip.io to validate the application is serving http request.
+![image](images/12.png)
+
+6. Scroll down to display the buttons and click `Create`.
+
+7. Check for the `Accepted` status.
+
+You can click the route link to validate the application is serving http request.
 
 You will be connected to the sushiweb website.
 
-![image](images/11.png)
+![image](images/13.png)
+
 
 This conclude the first part of the hands-on lab.
 

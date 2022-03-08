@@ -13,15 +13,15 @@ As you can see, this project contains a Dockerfile file describing how to build 
 
 #	Build a website container from Dockerfile
 
-## Create a new project
+## Select a project
 
-1. First, go back to the `Developer`view
+1. First, go back to the `Developer` view and then `Topology`.
 
-2. Select Project: `sushiweb` and click  `Create Project`
+2. Ensure, the project: `user1-sushi` is selected.
 
 ![image](images/2.png)
 
-3. Enter Name `sushiweb-sources` and  click `Create`
+
 
 ## Create an OpenShift deployment from Github source code
 
@@ -77,7 +77,7 @@ Check GitHub to discover the new branch: https://github.com/geoffrey-pascal/sush
 
 ![image](images/10.png)
 
-3. The git field contains the URI to the remote Git repository of the source code, to check out a specific Git add a line `ref: v1.0` after the `uri: 'https://github.com/geoffrey-pascal/sushiweb'`, This branch contains the new development version of Sushiweb, click `Save`
+3. The git field contains the URI to the remote Git repository of the source code, to check out a specific Git, replace the line `ref: ubi8` with `ref: v1.0` after the `uri: 'https://github.com/geoffrey-pascal/sushiweb'`. This branch contains the new development version of Sushiweb, click `Save`
 
 ![image](images/11.png)
 

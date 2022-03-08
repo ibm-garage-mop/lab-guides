@@ -5,15 +5,14 @@ You can get an overview of the app in the Github project: https://github.com/geo
 
 #	Deploy a multi-tier Application composed of NodeJS application and a MongoDB backend
 
-## Create a new project
+## Select a project
 
-1. First, go back to the `Topology` view.
+1. First, go back to the `Topology` view and select `Topology`
 
-2. Click `Create new project`
+2. Select project `user1-chat`
 
 ![image](images/1.png)
 
-3. Enter Name `letschat` and  click `Create`
 
 ## Deploy MongoDB
 
@@ -75,11 +74,13 @@ The NodeJS application requires the credentials to connect to the MongoDB databa
 
 9. Click the `mongodb`secret.
 
+![image](images/10.png)
+
 10. Add this secret to the NodeJS application by click on `Add Secret to workload`
 
 11. Select `letschat` in the workload list and click `Save`
 
-![image](images/10.png)
+![image](images/11.png)
 
 12. When the application deployment is completed `Build #1 is complete`, try to connect to the application by clicking on the Open URL button from the `Topology` view.
 
@@ -89,11 +90,11 @@ The NodeJS application requires the credentials to connect to the MongoDB databa
 
 14. Click `I need an account`
 
-![image](images/11.png)
+![image](images/12.png)
 
 15. Set dummies values for the account, remember the username and the password you will need to login into the application and click `Register`
 
-![image](images/12.png)
+![image](images/13.png)
 
 16. Try to login with your username and password.
 
