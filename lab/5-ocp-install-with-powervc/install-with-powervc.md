@@ -5,9 +5,10 @@
 * To check it is working properly, make sure you can access the PowerVC : <https://powervc.paris.edu.ihost.com:4443> 
 * The manager's ip (that hosts the terraform) is 10.3.48.3   
 to access it :
+```sh
 >ssh you_provided_user@10.3.48.3 \
 >password : your_provided_password
-
+```
 
 
 
@@ -39,11 +40,11 @@ The other ansible playbook will be generated next and will set the nodes to crea
 
 Now, we can clone the git repository.
 
-```
+```sh
 git clone https://github.com/ocp-power-automation/ocp4-upi-powervm
 ```
 
-```
+```text
 Cloning into 'ocp4-upi-powervm'...
 remote: Enumerating objects: 1732, done.
 remote: Counting objects: 100% (448/448), done.
@@ -53,23 +54,27 @@ Receiving objects: 100% (1732/1732), 424.05 KiB | 2.08 MiB/s, done.
 Resolving deltas: 100% (1038/1038), done.
 ```
 
-```
+```sh
 ls
+```
+```text
 ocp4-upi-powervm 
 ```
 
 We now have to work in the ocp4-upi-powervm directory
-```
+```sh
 cd ocp4-upi-powervm
 ```
 Copy the customized tfvar sample
 
-```
+```sh
 cp /home/samples/sample_demo.tfvars ~/ocp4-upi-powervm/paris.tfvars
 
 ```
+
 Initialize terraform
-```
+
+```sh
 terraform init -plugin-dir /usr/local/terraform/
 ```
 
@@ -81,13 +86,13 @@ Your personnal Openshift pull secret, is available at :
 
 Once copied, it must be pasted in the data/pull-secret.txt file.
 
-```
+```sh
 vi ocp4-upi-powervm/data/pull-secret.txt
 ```
 
 Create an ssh key, and copy it into the data directory
 
-```
+```sh
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa
 cp ~/.ssh/id_rsa* ocp4-upi-powervm/data/
 ```
@@ -96,7 +101,7 @@ Now, we can edit the paris.tfvars file in the ocp4-upi-powervm repository.
 
 Once done:
 
-```
+```sh
 terraform apply -var-file paris.tfvars
 ```
 
@@ -114,7 +119,7 @@ One can see the progress of the install of the bastion on PowerVC. For that, see
 
 
 The ip adress of the bastion is specified in the paris.tfvars file, as well as in the powervc (vm list -> network). From the manager's vm, one can access the bastion through ssh once it is properly deployed.
-```
+```sh
 ssh root@10.3.48.100
 ```
 
@@ -122,20 +127,21 @@ ssh root@10.3.48.100
 
 Wait for the openshift-install command is available :
 
-```
+```sh
 which openshift-install
 ```
-```
+
+```text
 /usr/local/bin/openshift-install
 ```
 Check that the openstack-upi directory as been created :
 
-```
+```sh
 ls -ld ~/openstack-upi/
 ```
 Add the bash completion for both the openshift-install and oc commands :
 
-```
+```sh
 oc completion bash > /etc/bash_completion.d/oc
 openshift-install completion bash > /etc/bash_completion.d/openshift-install
 
@@ -144,18 +150,20 @@ source /etc/bash_completion.d/openshift-install
 ```
 
 - To follow the installion progress of the bootstrat, once in the openstack repository :
-```
+
+```sh
 cd ~/openstack-upi/
 openshift-install wait-for bootstrap-complete --log-level debug
 ```
-- To follow the step of the install :
-```
+- To follow the step of the installation progress :
+
+```sh
 ~/openstack-upi/
 openshift-install wait-for install-complete --log-level debug
 ```
 - Check the installation :
 
-```
+```sh
 export KUBECONFIG=~/openstack-upi/auth/kubeconfig
 watch -n 15 "oc get clusterversions ; echo ; oc get co"
 ```
@@ -183,8 +191,10 @@ HA proxy to follow the installation, once the bastion is deployed : <http://10.3
 
 To get the password to access the cluster, type on the bastion
 
+```sh
+cat openstack-upi/auth/kubeadmin-password
+````
 
->cat openstack-upi/auth/kubeadmin-password
 
 <https://console-openshift-console.apps.paris.edu.ihost.com/>
 
@@ -198,7 +208,7 @@ To get the password to access the cluster, type on the bastion
 
 ### a) Edit the tfvar file
 
-Change the bootstrap count from 1 to 0 :
+Change the bootstrap count from 1 to 0 editing the tfvar file:
 
 ```
 bootstrap = {instance_type = "master", image_id = "8d20f462-260f-4715-9b95-6a63aad698e3", "count" = 0, fixed_ips = ["10.3.48.19"]}
@@ -207,10 +217,10 @@ bootstrap = {instance_type = "master", image_id = "8d20f462-260f-4715-9b95-6a63a
 
 ### b) Re-run the terraform script
 
-```
+```sh
 terraform apply -var-file paris.tfvars
 ```
-Answer 'yes'
+Answer 'yes' when prompted
 
 After the bootstrap node gets properly remove, the ha_proxy will show the following :
 ![ha_proxy with no bootstrap](images/no-bootstrap.png)
