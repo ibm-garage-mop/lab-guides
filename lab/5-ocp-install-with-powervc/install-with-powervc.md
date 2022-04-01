@@ -213,7 +213,7 @@ terraform apply -var-file paris.tfvars
 Answer 'yes'
 
 After the bootstrap node gets properly remove, the ha_proxy will show the following :
-![ha_proxy with no bootstrap](images/no-bootstrap.jpg)
+![ha_proxy with no bootstrap](images/no-bootstrap.png)
 
 You've completed the demo lab !
 
