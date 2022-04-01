@@ -6,8 +6,10 @@
 * The manager's ip (that hosts the terraform) is 10.3.48.3   
 to access it :
 ```sh
->ssh you_provided_user@10.3.48.3 \
->password : your_provided_password
+ssh you_provided_user@10.3.48.3 
+```
+```text
+password : your_provided_password
 ```
 
 
@@ -21,19 +23,12 @@ The ansible playbooks (1) and (2) will be on the bastion once it is deployed. Th
 
 
 
-![clipboard](https://i.imgur.com/TpxKcMx.png)
+![image](images/tf2pvc-0.png)
 
 The ansible helpernode playbook will prepare the bastion for the cluster and will set its environment.
 The other ansible playbook will be generated next and will set the nodes to create the cluster. 
 
-![image](https://user-images.githubusercontent.com/91323551/145597040-b9863539-52e8-4e45-b766-b400de1d39e7.png)
-
-
-
-
-
-
-
+![image](images/tf2pvc-1.png)
 
 
 ## 1) Cluster installation 
@@ -81,8 +76,9 @@ terraform init -plugin-dir /usr/local/terraform/
 Then, in the data directory, we need to copy the SSH key-pair and the pull-secret.txt.
 Your personnal Openshift pull secret, is available at :
 
-[<https://cloud.redhat.com/openshift/install/power/user-provisioned > ](https://console.redhat.com/openshift/install/power/user-provisioned)
-![clipboard](https://i.imgur.com/0x33IoI.png)
+[https://cloud.redhat.com/openshift/install/power/user-provisioned](https://console.redhat.com/openshift/install/power/user-provisioned)
+
+![image](images/PullSecret.png)
 
 Once copied, it must be pasted in the data/pull-secret.txt file.
 
@@ -116,7 +112,7 @@ The terraform script will create the VMs as specified in the demo.tfvars file.
 Once the apply command is launched, we need to wait for the bastion to be fully deployed. 
 
 One can see the progress of the install of the bastion on PowerVC. For that, see Virtual Machines -> VM list. 
-![image](https://user-images.githubusercontent.com/91323551/145581536-010e7e17-5353-4172-9b04-65f80fdc4a81.png)
+![image](images/pvc-paris-bastion.png)
 
 
 The ip adress of the bastion is specified in the paris.tfvars file, as well as in the powervc (vm list -> network). From the manager's vm, one can access the bastion through ssh once it is properly deployed.
@@ -175,16 +171,16 @@ watch -n 15 "oc get clusterversions ; echo ; oc get co"
 HA proxy to follow the installation, once the bastion is deployed : <http://10.3.48.100:9000/>
 
 * At first, all the other machines will still be red, because not deployed yet.
-![clipboard](https://i.imgur.com/OvZgX81.png)
+![image](images/ha_proxy-0.png)
 
 * Then, the bootstrap will be deployed next. It will compose a mini cluster on its own.
-![clipboard](https://i.imgur.com/YdQWw2s.png)
+![image](images/ha_proxy-1.png)
 
 * After the bootstrap come the masters that will join it in the cluster.
-![clipboard](https://i.imgur.com/Sk14RCI.png)
+![image](images/ha_proxy-2.png)
 
 * Then come the workers. Once the masters are all deployed, the bootstrap will be destroyed since it is no longer userful.
-![clipboard](https://i.imgur.com/hRcBZ4s.png)
+![image](images/ha_proxy-3.png)
 
 
 
@@ -202,7 +198,7 @@ cat openstack-upi/auth/kubeadmin-password
 >username : kubeadmin \
 >password : in openstack-upi/auth/kubeadmin-password
 
-![clipboard](https://i.imgur.com/1gldP6p.png)
+![image](images/ocp-console.png)
 
 
 ## 4) Extra step, remove the bootstrap node
