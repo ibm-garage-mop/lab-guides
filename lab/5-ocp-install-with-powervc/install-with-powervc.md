@@ -96,9 +96,13 @@ Now, we can edit the paris.tfvars file in the ocp4-upi-powervm repository.
 
 Once done:
 
->[radardemo@radardemomgt ocp4-upi-powervm]$ terraform apply -var-file paris.tfvars
+```
+terraform apply -var-file paris.tfvars
+```
 
-The terraform will create the VMs as specified in the demo.tfvars file.
+Answer 'yes' when prompted
+
+The terraform script will create the VMs as specified in the demo.tfvars file.
 
 ## 2) Monitoring the installation
 
@@ -157,11 +161,9 @@ watch -n 15 "oc get clusterversions ; echo ; oc get co"
 ```
 
 
+### b) Check the apis and nodes from the bastion's ha_proxy
 
-### b) through the bastion, using graphics
-
-HA proxy to follow the installation, once the bastion is deployed.
-<http://10.3.48.100:9000/>
+HA proxy to follow the installation, once the bastion is deployed : <http://10.3.48.100:9000/>
 
 * At first, all the other machines will still be red, because not deployed yet.
 ![clipboard](https://i.imgur.com/OvZgX81.png)
@@ -192,44 +194,25 @@ To get the password to access the cluster, type on the bastion
 ![clipboard](https://i.imgur.com/1gldP6p.png)
 
 
-## 4) Cleaning the environment
+## 4) Extra step, remove the bootstrap node
 
-### a) Delete the current cluster (if needed)
-The user radardemo has only a limited range of ip adresses to create their cluster. Therefore, if one cluster already exists, it is better to delete it to free these ips.
+### a) Edit the tfvar file
 
+Change the bootstrap count from 1 to 0 :
 
-On the manager's vm, in /home/radardemo:
-````
-[radardemo@radardemomgt ~]$ ll
-total 20
--rw-rw-r--. 1 radardemo radardemo 5369 Oct 19 12:42 demo.tfvars
-drwxrwxr-x. 7 radardemo radardemo 4096 Oct 19 12:22 ocp4-upi-powervm
--rw-rw-r--. 1 radardemo radardemo  156 Oct 19 14:55 terraform.tfstate
--rw-r--r--. 1 radardemo radardemo 1842 Oct 12 17:35 vars_paris.yaml
-[radardemo@radardemomgt ~]$ cd ocp4-upi-powervm
-[radardemo@radardemomgt ocp4-upi-powervm]$$ terraform destroy -var-file=demo.tfvars
-```````
-
-The destroy command must be done inside the right repository (the demo.tfvars will then be found.)
->:warning: Once the destroy command is launched, make sure to wait for the deletion of all the vms of the cluster before moving on to the next step.
-
-![clipboard](https://i.imgur.com/ifR8fth.png)
+```
+bootstrap = {instance_type = "master", image_id = "8d20f462-260f-4715-9b95-6a63aad698e3", "count" = 0, fixed_ips = ["10.3.48.19"]}
+```
 
 
-### b) Remove the old bastion from known_hosts
+### b) Re-run the terraform script
 
->[radardemo@radardemomgt ocp4-upi-powervm]$ vi ~/.ssh/known_hosts
+```
+terraform apply -var-file paris.tfvars
+```
+Answer 'yes'
 
-and delete the line with the bastion's IP.
-
-### c) Remove the git repository
-
-```````
-[radardemo@radardemomgt ~]$ rm -rf ocp4-upi-powervm/
-```````
-
-
-
+You've completed the demo lab !
 
 
 
