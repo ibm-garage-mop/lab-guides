@@ -93,10 +93,7 @@ ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa
 cp ~/.ssh/id_rsa* ocp4-upi-powervm/data/
 ```
 Now, we can edit the paris.tfvars file in the ocp4-upi-powervm repository.
-You can find how to customize the tfvars file here: 
-[Customize the tfvar file](tfvars.md)
-
-<a href="tfvars.md" target="_blank">Here</a>
+You can find how to customize the tfvars file here: [Customize the tfvar file](tfvars.md)
 
 Once done:
 
