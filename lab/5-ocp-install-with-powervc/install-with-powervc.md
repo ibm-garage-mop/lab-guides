@@ -1,4 +1,4 @@
-# Install of an Openshift cluster through PowerVC
+# Install an Openshift cluster with Terraform and PowerVC
 
 ## Check the environment
 
