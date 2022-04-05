@@ -92,7 +92,8 @@ ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa
 cp ~/.ssh/id_rsa* ocp4-upi-powervm/data/
 ```
 
-Now, we can edit the paris.tfvars file in the ocp4-upi-powervm repository.
+Now, you have to edit the paris.tfvars file. The minimum requirement is to accomodate the user and password as
+they have been provided to you by Techzone.
 You can find how to customize the tfvars file here: [Customize the tfvar file](tfvars.md)
 
 Once done:
@@ -222,3 +223,6 @@ After the bootstrap node gets properly remove, the ha_proxy will show the follow
 ![ha_proxy with no bootstrap](images/no-bootstrap.png)
 
 You've completed the demo lab !
+
+> You can find a complete documentation of the Terraform deployment at the [ocp4-upi-powervm
+ github](https://github.com/ocp-power-automation/ocp4-upi-powervm#readme)
