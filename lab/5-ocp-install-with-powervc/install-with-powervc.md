@@ -46,55 +46,69 @@ Resolving deltas: 100% (1038/1038), done.
 ```
 
 ```sh
-le
+ls
 ```
 
 ```text
 ocp4-upi-powervm 
 ```
 
-We now have to work in the ocp4-upi-powervm directory
+We now have to work in the `ocp4-upi-powervm` directory :
 
 ```sh
 cd ocp4-upi-powervm
 ```
 
-Copy the customized tfvar sample
+Copy the customized `.tfvar` sample :
 
 ```sh
 cp /home/samples/sample_demo.tfvars ~/ocp4-upi-powervm/paris.tfvars
-
 ```
 
-Initialize terraform
+Initialize the terraform plugins and modules for you environment :
 
 ```sh
 terraform init -plugin-dir /usr/local/terraform/
 ```
 
-Then, in the data directory, we need to copy the SSH key-pair and the pull-secret.txt.
+Both the Openshift pull-secret and the ssh key-pair have to be copied in the `ocp4-upi-powervm/data` directory.
+
 Your personnal Openshift pull secret, is available at :
 
 [https://cloud.redhat.com/openshift/install/power/user-provisioned](https://console.redhat.com/openshift/install/power/user-provisioned)
 
 ![image](images/PullSecret.png)
 
-Once copied, it must be pasted in the data/pull-secret.txt file.
+Once copied, you can insert it in the `data/pull-secret.txt` file.
 
 ```sh
-vi ocp4-upi-powervm/data/pull-secret.txt
+vi ~/ocp4-upi-powervm/data/pull-secret.txt
 ```
 
-Create an ssh key, and copy it into the data directory
+Create an ssh key, and copy it into the `data` directory
 
-```sh
+```shell
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa
-cp ~/.ssh/id_rsa* ocp4-upi-powervm/data/
+```
+Enter *y* to overwrite any existing key-pair :
+
+```text
+/home/id86c7d6e/.ssh/id_rsa already exists.
+Overwrite (y/n)?
+```
+Copy the newly created key-pair to the *data* directory, and check the files :
+```sh
+cp ~/.ssh/id_rsa* ~/ocp4-upi-powervm/data/
+ls ~/ocp4-upi-powervm/data/
 ```
 
-Now, you have to edit the paris.tfvars file. The minimum requirement is to accomodate the user and password as
+Now, you have to edit the terraform configuration `paris.tfvars` file. The minimum requirement is to accomodate the user and password as
 they have been provided to you by Techzone.
-You can find how to customize the tfvars file here: [Customize the tfvar file](tfvars.md)
+You can find how to customize the terraform customization here: [customize the tfvar file](install-with-powervc.md)
+
+```sh
+vi paris.tfvars
+```
 
 Once done:
 
@@ -102,19 +116,54 @@ Once done:
 terraform apply -var-file paris.tfvars
 ```
 
-Answer 'yes' when prompted
+Answer *yes* when prompted.
 
 The terraform script will create the VMs as specified in the demo.tfvars file.
 
 ## 2) Monitoring the installation
 
+The terraform script is first building the bastion an will try to ssh in order to ssh
+it to continue with the installation :
+
+```text
+module.bastion.null_resource.bastion_init[0]: Still creating... [4m0s elapsed]
+module.bastion.null_resource.bastion_init[0] (remote-exec): Connecting to remote host via SSH...
+module.bastion.null_resource.bastion_init[0] (remote-exec):   Host: 10.3.48.100
+module.bastion.null_resource.bastion_init[0] (remote-exec):   User: root
+module.bastion.null_resource.bastion_init[0] (remote-exec):   Password: false
+module.bastion.null_resource.bastion_init[0] (remote-exec):   Private key: true
+module.bastion.null_resource.bastion_init[0] (remote-exec):   Certificate: false
+module.bastion.null_resource.bastion_init[0] (remote-exec):   SSH Agent: false
+module.bastion.null_resource.bastion_init[0] (remote-exec):   Checking Host Key: false
+```
+
+Until it can successfully connect :
+
+```text
+module.bastion.null_resource.bastion_init[0]: Creation complete after 5m26s [id=7156080057483097683]
+module.bastion.null_resource.enable_repos[0]: Creating...
+module.bastion.null_resource.enable_repos[0]: Provisioning with 'remote-exec'...
+module.bastion.null_resource.enable_repos[0] (remote-exec): Connecting to remote host via SSH...
+module.bastion.null_resource.enable_repos[0] (remote-exec):   Host: 10.3.48.100
+module.bastion.null_resource.enable_repos[0] (remote-exec):   User: root
+module.bastion.null_resource.enable_repos[0] (remote-exec):   Password: false
+module.bastion.null_resource.enable_repos[0] (remote-exec):   Private key: true
+module.bastion.null_resource.enable_repos[0] (remote-exec):   Certificate: false
+module.bastion.null_resource.enable_repos[0] (remote-exec):   SSH Agent: false
+module.bastion.null_resource.enable_repos[0] (remote-exec):   Checking Host Key: false
+module.bastion.null_resource.enable_repos[0] (remote-exec): Connected!
+```
+
+The bastion shows up in PowerVC as well :
+
+![image](images/tf2pvc-3.png)
 ### a) command lines on the bastion
 
 Once the apply command is launched, we need to wait for the bastion to be fully deployed.
 One can see the progress of the install of the bastion on PowerVC. For that, see Virtual Machines -> VM list.
 ![image](images/pvc-paris-bastion.png)
 
-The ip adress of the bastion is specified in the paris.tfvars file, as well as in the powervc (vm list -> network). From the manager's vm, one can access the bastion through ssh once it is properly deployed.
+The ip adress of the bastion is specified in the `paris.tfvars` file, as well as in PowerVC (vm list, network column). Open another terminal, ssh to `10.3.48.100` with your login, and access the bastion with ssh once it is properly deployed.
 
 ```sh
 ssh root@10.3.48.100
@@ -146,27 +195,52 @@ openshift-install completion bash > /etc/bash_completion.d/openshift-install
 
 source /etc/bash_completion.d/oc
 source /etc/bash_completion.d/openshift-install
+
 ```
 
-* To follow the installion progress of the bootstrat, once in the openstack repository :
+* To follow the installion progress of the bootstrap, once in the openstack repository :
 
 ```sh
 cd ~/openstack-upi/
 openshift-install wait-for bootstrap-complete --log-level debug
 ```
 
-* To follow the step of the installation progress :
+The bootstrap should complete its work within 10 to 15 minutes :
+
+```text
+[root@paris-bastion-0 openstack-upi]# openshift-install wait-for bootstrap-complete --log-level debug
+DEBUG OpenShift Installer 4.8.35
+DEBUG Built from commit aaa978bb5d76472df23f6e90293e68aaa43a8457
+INFO Waiting up to 20m0s for the Kubernetes API at https://api.paris.edu.ihost.com:6443...
+DEBUG Still waiting for the Kubernetes API: an error on the server ("") has prevented the request from succeeding
+INFO API v1.21.8+ee73ea2 up
+INFO Waiting up to 30m0s for bootstrapping to complete...
+DEBUG Bootstrap status: complete
+INFO It is now safe to remove the bootstrap resources
+DEBUG Time elapsed per stage:
+DEBUG Bootstrap Complete: 9m58s
+DEBUG                API: 1m21s
+INFO Time elapsed: 9m58s
+```
+
+* To follow the step of the installation progress, open another terminal, then ssh to `10.3.48.100` with your login, and access the bastion with ssh once it is properly deployed.
 
 ```sh
-~/openstack-upi/
+ssh root@10.3.48.100
+```
+
+Check the installation progress :
+```sh
+cd ~/openstack-upi/
 openshift-install wait-for install-complete --log-level debug
 ```
 
-* Check the installation :
+* Check nodes and cluster operatot progress from the bastion :
 
 ```sh
+cd ~
 export KUBECONFIG=~/openstack-upi/auth/kubeconfig
-watch -n 15 "oc get clusterversions ; echo ; oc get co"
+watch -n 15 "oc get clusterversions ; echo ; oc get nodes ; echo ; oc get co"
 ```
 
 ### b) Check the apis and nodes from the bastion's ha_proxy
@@ -187,25 +261,79 @@ HA proxy to follow the installation, once the bastion is deployed : <http://10.3
 
 ## 3) Check that you can access your new cluster
 
-To get the password to access the cluster, type on the bastion
+Once the installation is complete, the terminal where the `openshift-install wait-for install-complete --log-level debug` was run will show up an output similar to :
+
+```text
+DEBUG Cluster is initialized
+INFO Waiting up to 10m0s for the openshift-console route to be created...
+DEBUG Route found in openshift-console namespace: console
+DEBUG OpenShift console route is admitted
+INFO Install complete!
+INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/root/openstack-upi/auth/kubeconfig'
+INFO Access the OpenShift web-console here: https://console-openshift-console.apps.paris.edu.ihost.com
+INFO Login to the console with user: "kubeadmin", and password: "acLV9-INr3L-FZBxb-prFsZ"
+DEBUG Time elapsed per stage:
+DEBUG Cluster Operators: 23m1s
+INFO Time elapsed: 23m1s
+```
+
+Note that both the cluter's console and the `kubeadmin` password is provided in this output. You can also retrieve the password from the `kubeadmin-password` file on the bastion.
 
 ```sh
-cat openstack-upi/auth/kubeadmin-password
+cat ~/openstack-upi/auth/kubeadmin-password ; echo
 ````
+The terraform as now completed its work, and has an output similar to:
 
-<https://console-openshift-console.apps.paris.edu.ihost.com/>
+```text
+Apply complete! Resources: 27 added, 0 changed, 0 destroyed.
 
->username : kubeadmin \
->password : in openstack-upi/auth/kubeadmin-password
+Outputs:
 
-The Openshift console shows up like:
+bastion_ip = 10.3.48.100
+bastion_ssh_command = ssh root@10.3.48.100
+bootstrap_ip = 10.3.48.19
+cluster_id = paris
+etc_hosts_entries =
+10.3.48.100 api.paris.edu.ihost.com console-openshift-console.apps.paris.edu.ihost.com integrated-oauth-server-openshift-authentication.apps.paris.edu.ihost.com oauth-openshift.apps.paris.edu.ihost.com prometheus-k8s-openshift-monitoring.apps.paris.edu.ihost.com grafana-openshift-monitoring.apps.paris.edu.ihost.com example.apps.paris.edu.ihost.com
+
+install_status = COMPLETED
+master_ips = [
+  "10.3.48.10",
+  "10.3.48.11",
+  "10.3.48.12",
+]
+oc_server_url = https://api.paris.edu.ihost.com:6443
+storageclass_name = nfs-storage-provisioner
+web_console_url = https://console-openshift-console.apps.paris.edu.ihost.com
+worker_ips = [
+  "10.3.48.13",
+  "10.3.48.14",
+  "10.3.48.15",
+]
+```
+You can now login with kubeadmin to the cluster's console : [https://console-openshift-console.apps.paris.edu.ihost.com](
+https://console-openshift-console.apps.paris.edu.ihost.com), using the password provided above.
+
+You have to accept the security alert **twice** because the cluster is using a self-signed certificate.
+The example below is for Firefox :
+
+First, go to `Advanced`:
+
+![image](images/console-alert-0.png)
+
+Second, accept the `risk and continue`:
+
+![image](images/console-alert-1.png)
+
+The Openshift cluster's console shows up like:
+
 ![image](images/ocp-console.png)
 
 ## 4) Extra final step, remove the bootstrap node
 
 ### a) Edit the tfvar file
 
-Edit the tfvar file and change the bootstrap count from 1 to 0 :
+Edit the tfvar file and change the bootstrap count from `1` to `0` :
 
 ```text
 bootstrap = {instance_type = "master", image_id = "8d20f462-260f-4715-9b95-6a63aad698e3", "count" = 0, fixed_ips = ["10.3.48.19"]}

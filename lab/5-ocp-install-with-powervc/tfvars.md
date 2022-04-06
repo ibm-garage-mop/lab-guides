@@ -1,12 +1,12 @@
 # Parameters in the .tfvars file
 
-This is a minimum documentation of the `.tfvar`file. You can find a complete descrition of the parameters at [The PowerVM upi git](https://github.com/ocp-power-automation/ocp4-upi-powervm/blob/master/docs/var.tfvars-doc.md)
+This is a limited documentation of the `.tfvar` file. You can find a complete descrition of the tfvar parameters at [The PowerVM upi github repo](https://github.com/ocp-power-automation/ocp4-upi-powervm/blob/master/docs/var.tfvars-doc.md).
 ## 1) PowerVC credential details
 
 ```text
-auth_url                    = "<https://<HOSTNAME>:5000/v3/>"   # hostname : 10.3.47.2, not to be changed
-user_name                   = "<powervc-login-user-name>"       # Provided by Techzone
-password                    = "<powervc-login-user-password>"   # Provided by Techzone
+auth_url                    = "https://10.3.47.2:5000/v3/"   # hostname of PowerVC instance, not to be changed
+user_name                   = "powervc-login-user-name"       # Provided by Techzone
+password                    = "powervc-login-user-password"   # Provided by Techzone
 tenant_name                 = "radardemo" 
 domain_name                 = "Default"
 
@@ -26,11 +26,11 @@ master                      = {instance_type    = "master",    image_id    = "8d
 worker                      = {instance_type    = "worker",    image_id    = "8d20f462-260f-4715-9b95-6a63aad698e3",  "count"   = 3, fixed_ips = ["10.3.48.13", "10.3.48.14", "10.3.48.15"]}
 ```
 
-* The instance_type must be chosen within the compute templates name available. Each template provides a certain amount of CPU and memory resources -> Select **Compute templates** in the left pane, it gives the provisionning of the VM.
+* The `instance_type` must be chosen within the compute templates name available. Each template provides a certain amount of CPU and memory resources -> Select **Compute templates** in the left pane, it gives the provisionning of the VM.
 
 ![image](images/tfvars-0.png)
 
-* The image_id is in those the allowed OS images -> **Image list**. The OS images of the VMs must be *CoreOS* for the clusters nodes, and *CENTOS/RHEL* for the bastion node.
+* The image_id` are those allowed OS images -> **Image list**. The OS images of the VMs must be *CoreOS* for the clusters nodes, and *CENTOS/RHEL* for the bastion node.
 
 ![image](images/tfvars-1.png)
 
@@ -43,10 +43,11 @@ Click the `CentosStream8-Demo` image name to retrieve its ID :
 ![image](images/tfvars-3.png)
 
 Click in the `RadarDemo` network to check the list of IP adresses allocated to this network :
-`
+
 ![image](images/tfvars-4.png)
 
-Here, we can see that the allowed IP's are 10.3.48.100 and 10.3.48.10 to 10.3.48.19. Make sure you do not change any of them since we have allocated them among a set of IP
+Here, we can see that the allowed IP's are 10.3.48.100 and 10.3.48.10 to 10.3.48.19.
+Make sure you do not change any of them since we have allocated them among a set of IP
 adresses accessible through our networks security equipments.
 
 An example for the masters :
@@ -55,7 +56,7 @@ An example for the masters :
 master = {instance_type    = "master",    image_id    = "8d20f462-260f-4715-9b95-6a63aad698e3",  "count"   = 3, fixed_ips = ["10.3.48.10", "10.3.48.11", "10.3.48.12"]}
 ```
 
-Do not change or increase the number of nodes or templates since it could affect the deployment of your cluster. The resources have been carved to fit the demo systems.
+Do not change the or `instace_type`, `image_id` or increase the `count` since it could affect the deployment of your cluster. The resources have been carved to fit the demo systems.
 
 ## 3) Openshift level
 
@@ -69,4 +70,5 @@ openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc
 pull_secret_file            = "data/pull-secret.txt"
 ```
 
-It has to match the level of CoreOS image selected in the previous steps.
+It matches the level of CoreOS image selected in the previous steps.
+You may now save the `paris.tfvars` file and return and to the [main road book](install-with-powervc.md)
