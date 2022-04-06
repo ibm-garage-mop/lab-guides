@@ -2,8 +2,8 @@
 
 ## Check the environment
 
-* Activate openvpn
-* To check it is working properly, make sure you can access the PowerVC : <https://powervc.paris.edu.ihost.com:4443>
+* Activate your openvpn.
+* To check it is working properly, make sure you can access the PowerVC : <https://powervc.paris.edu.ihost.com:4443>.
 * The manager's ip (that hosts the terraform) is 10.3.48.3
 to access it :
 
@@ -15,7 +15,7 @@ ssh you_provided_user@10.3.48.3
 password : your_provided_password
 ```
 
-The terraform is on the manager's vm (distinct from the VM on which the PowerVC runs).
+The terraform runs on the manager's vm (distinct from the VM on which the PowerVC runs).
 It takes the var.tfvars file in input and will generate a tfstate file.
 
 The ansible playbooks (1) and (2) will be on the bastion once it is deployed. They will run to automatically create the cluster as stated in the tfstate file.
@@ -90,13 +90,16 @@ Create an ssh key, and copy it into the `data` directory
 ```shell
 ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa
 ```
+
 Enter *y* to overwrite any existing key-pair :
 
 ```text
 /home/id86c7d6e/.ssh/id_rsa already exists.
 Overwrite (y/n)?
 ```
+
 Copy the newly created key-pair to the *data* directory, and check the files :
+
 ```sh
 cp ~/.ssh/id_rsa* ~/ocp4-upi-powervm/data/
 ls ~/ocp4-upi-powervm/data/
@@ -157,6 +160,7 @@ module.bastion.null_resource.enable_repos[0] (remote-exec): Connected!
 The bastion shows up in PowerVC as well :
 
 ![image](images/tf2pvc-3.png)
+
 ### a) command lines on the bastion
 
 Once the apply command is launched, we need to wait for the bastion to be fully deployed.
@@ -230,12 +234,13 @@ ssh root@10.3.48.100
 ```
 
 Check the installation progress :
+
 ```sh
 cd ~/openstack-upi/
 openshift-install wait-for install-complete --log-level debug
 ```
 
-* Check nodes and cluster operatot progress from the bastion :
+* Check nodes and cluster operators progress from the bastion :
 
 ```sh
 cd ~
@@ -277,7 +282,7 @@ DEBUG Cluster Operators: 23m1s
 INFO Time elapsed: 23m1s
 ```
 
-Note that both the cluter's console and the `kubeadmin` password is provided in this output. You can also retrieve the password from the `kubeadmin-password` file on the bastion.
+Note that both the cluster's console and the `kubeadmin` password are provided in this output. You can also retrieve the password from the `kubeadmin-password` file on the bastion.
 
 ```sh
 cat ~/openstack-upi/auth/kubeadmin-password ; echo
@@ -311,6 +316,7 @@ worker_ips = [
   "10.3.48.15",
 ]
 ```
+
 You can now login with kubeadmin to the cluster's console : [https://console-openshift-console.apps.paris.edu.ihost.com](
 https://console-openshift-console.apps.paris.edu.ihost.com), using the password provided above.
 
