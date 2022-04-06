@@ -161,6 +161,8 @@ The bastion shows up in PowerVC as well :
 
 ![image](images/tf2pvc-3.png)
 
+
+
 ### a) command lines on the bastion
 
 Once the apply command is launched, we need to wait for the bastion to be fully deployed.
@@ -175,7 +177,14 @@ ssh root@10.3.48.100
 
 >:warning: The openstack repository might take some time to be created (the helpernode and then the playbooks repo should be created first).
 
-Wait for the openshift-install command is available :
+
+You may refresh the PowerVC gui from time to time to update the `VM list` view :
+
+![image](images/tf2pvc-6.png)
+
+The terraform script is going to install a few ansible playbooks.
+
+Wait for the openshift-install command is available (Will be installed eventually after the helper-node gets configured):
 
 ```sh
 which openshift-install
@@ -185,10 +194,10 @@ which openshift-install
 /usr/local/bin/openshift-install
 ```
 
-Check that the openstack-upi directory as been created :
+Wait for the openstack-upi directory to be created :
 
 ```sh
-ls -ld ~/openstack-upi/
+ls ~/openstack-upi/
 ```
 
 Add the bash completion for both the openshift-install and oc commands :
@@ -279,7 +288,7 @@ DEBUG OpenShift console route is admitted
 INFO Install complete!
 INFO To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/root/openstack-upi/auth/kubeconfig'
 INFO Access the OpenShift web-console here: https://console-openshift-console.apps.paris.edu.ihost.com
-INFO Login to the console with user: "kubeadmin", and password: "acLV9-INr3L-FZBxb-prFsZ"
+INFO Login to the console with user: "kubeadmin", and password: "your_newly_created_password_here"
 DEBUG Time elapsed per stage:
 DEBUG Cluster Operators: 23m1s
 INFO Time elapsed: 23m1s
