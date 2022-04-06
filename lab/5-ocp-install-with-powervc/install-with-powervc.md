@@ -250,7 +250,10 @@ watch -n 15 "oc get clusterversions ; echo ; oc get nodes ; echo ; oc get co"
 
 ### b) Check the apis and nodes from the bastion's ha_proxy
 
-HA proxy to follow the installation, once the bastion is deployed : <http://10.3.48.100:9000/>
+The status of the api, and nodes can usually be check at the port 9000 of the bastion node. For the ease of this
+lab, we have provided a dedicated redirection.
+
+HA proxy to follow the installation, once the bastion is deployed is at <http://haproxy.paris.edu.ihost.com:9000>
 
 * At first, all the other machines will still be red, because not deployed yet.
 ![image](images/ha_proxy-0.png)
@@ -287,6 +290,7 @@ Note that both the cluster's console and the `kubeadmin` password are provided i
 ```sh
 cat ~/openstack-upi/auth/kubeadmin-password ; echo
 ````
+
 The terraform as now completed its work, and has an output similar to:
 
 ```text
@@ -353,7 +357,7 @@ terraform apply -var-file paris.tfvars
 
 Answer 'yes' when prompted
 
-After the bootstrap node gets properly remove, the ha_proxy will show the following :
+After the bootstrap node gets properly removed, the [ha_proxy](<http://haproxy.paris.edu.ihost.com:9000>) will show the following :
 ![ha_proxy with no bootstrap](images/no-bootstrap.png)
 
 You've completed the demo lab !
