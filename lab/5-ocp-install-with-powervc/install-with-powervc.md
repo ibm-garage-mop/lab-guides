@@ -259,7 +259,7 @@ watch -n 15 "oc get clusterversions ; echo ; oc get nodes ; echo ; oc get co"
 The status of the api, and nodes can usually be check at the port 9000 of the bastion node. For the ease of this
 lab, we have provided a dedicated redirection.
 
-HA proxy to follow the installation, once the bastion is deployed is at <http://haproxy.paris.edu.ihost.com:9000>
+HA proxy to follow the installation, once the bastion is deployed is at <http://haproxy.paris.edu.ihost.com:9007>
 
 * At first, all the other machines will still be red, because not deployed yet.
 ![image](images/ha_proxy-0.png)
@@ -363,7 +363,7 @@ terraform apply -var-file paris.tfvars
 
 Answer 'yes' when prompted
 
-After the bootstrap node gets properly removed, the [ha_proxy](<http://haproxy.paris.edu.ihost.com:9000>) will show the following :
+After the bootstrap node gets properly removed, the [ha_proxy](<http://haproxy.paris.edu.ihost.com:9007>) will show the following :
 ![ha_proxy with no bootstrap](images/no-bootstrap.png)
 
 You've completed the demo lab !
