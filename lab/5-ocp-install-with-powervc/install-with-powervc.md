@@ -107,7 +107,7 @@ ls ~/ocp4-upi-powervm/data/
 
 Now, you have to edit the terraform configuration `paris.tfvars` file. The minimum requirement is to accomodate the user and password as
 they have been provided to you by Techzone.
-You can find how to customize the terraform customization here: [customize the tfvar file](install-with-powervc.md)
+You can find how to customize the terraform customization here: [customize the tfvar file](tfvars.md)
 
 ```sh
 vi paris.tfvars
