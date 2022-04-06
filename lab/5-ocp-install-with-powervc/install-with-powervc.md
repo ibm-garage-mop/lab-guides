@@ -161,8 +161,6 @@ The bastion shows up in PowerVC as well :
 
 ![image](images/tf2pvc-3.png)
 
-
-
 ### a) command lines on the bastion
 
 Once the apply command is launched, we need to wait for the bastion to be fully deployed.
@@ -176,7 +174,6 @@ ssh root@10.3.48.100
 ```
 
 >:warning: The openstack repository might take some time to be created (the helpernode and then the playbooks repo should be created first).
-
 
 You may refresh the PowerVC gui from time to time to update the `VM list` view :
 
