@@ -8,7 +8,7 @@
 to access it :
 
 ```sh
-ssh you_provided_user@10.3.48.3 
+ssh your_provided_user@10.3.48.3 
 ```
 
 ```text
