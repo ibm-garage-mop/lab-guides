@@ -119,7 +119,10 @@ Once done:
 terraform apply -var-file paris.tfvars
 ```
 
+
 Answer *yes* when prompted.
+
+
 
 The terraform script will create the VMs as specified in the demo.tfvars file.
 
