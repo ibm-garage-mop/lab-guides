@@ -113,23 +113,29 @@ You can find how to customize the terraform customization here: [customize the t
 vi paris.tfvars
 ```
 
-Once done:
+You can now start the terraform deployment :
 
 ```sh
 terraform apply -var-file paris.tfvars
 ```
 
 
-Answer *yes* when prompted.
+Answer *yes* when prompted :
+
+```
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+```
 
 
 
-The terraform script will create the VMs as specified in the demo.tfvars file.
+The terraform script starts creating the VMs as specified in the demo.tfvars file.
 
 ## 2) Monitoring the installation
 
-The terraform script is first building the bastion an will try to ssh in order to ssh
-it to continue with the installation :
+The terraform script first builds the bastion an will try to ssh in order to ssh
+it to continue with the installation. It may take around 5 minutes to get the bastion ready :
 
 ```text
 module.bastion.null_resource.bastion_init[0]: Still creating... [4m0s elapsed]
@@ -143,7 +149,7 @@ module.bastion.null_resource.bastion_init[0] (remote-exec):   SSH Agent: false
 module.bastion.null_resource.bastion_init[0] (remote-exec):   Checking Host Key: false
 ```
 
-Until it can successfully connect :
+Until the terraform script can successfully connect :
 
 ```text
 module.bastion.null_resource.bastion_init[0]: Creation complete after 5m26s [id=7156080057483097683]
@@ -170,7 +176,19 @@ Once the apply command is launched, we need to wait for the bastion to be fully 
 One can see the progress of the install of the bastion on PowerVC. For that, see Virtual Machines -> VM list.
 ![image](images/pvc-paris-bastion.png)
 
-The ip adress of the bastion is specified in the `paris.tfvars` file, as well as in PowerVC (vm list, network column). Open another terminal, ssh to `10.3.48.100` with your login, and access the bastion with ssh once it is properly deployed.
+The ip adress of the bastion is specified in the `paris.tfvars` file, as well as in PowerVC (vm list, network column). 
+You first need to open a new ssh session to ***10.3.48.3*** with your credentials :
+
+```sh
+ssh your_provided_user@10.3.48.3 
+```
+
+```text
+password : your_provided_password
+```
+
+Then, ssh to `10.3.48.100`, and access the bastion with ssh once it is properly deployed.
+you don't need any passwd, since the terraform script has installed it's public key onto the bastion.
 
 ```sh
 ssh root@10.3.48.100
@@ -182,7 +200,7 @@ You may refresh the PowerVC gui from time to time to update the `VM list` view :
 
 ![image](images/tf2pvc-6.png)
 
-The terraform script is going to install a few ansible playbooks.
+The terraform script has to install a few ansible playbooks.
 
 Wait for the openshift-install command is available (Will be installed eventually after the helper-node gets configured):
 
@@ -218,15 +236,15 @@ cd ~/openstack-upi/
 openshift-install wait-for bootstrap-complete --log-level debug
 ```
 
-The bootstrap should complete its work within 10 to 15 minutes :
+The bootstrap should complete its work within 10 to 20 minutes :
 
 ```text
 [root@paris-bastion-0 openstack-upi]# openshift-install wait-for bootstrap-complete --log-level debug
-DEBUG OpenShift Installer 4.8.35
-DEBUG Built from commit aaa978bb5d76472df23f6e90293e68aaa43a8457
+DEBUG OpenShift Installer 4.10.11
+DEBUG Built from commit 08bc665c50ff867ffd81cfe8f485f2b7c501506b
 INFO Waiting up to 20m0s for the Kubernetes API at https://api.paris.edu.ihost.com:6443...
 DEBUG Still waiting for the Kubernetes API: an error on the server ("") has prevented the request from succeeding
-INFO API v1.21.8+ee73ea2 up
+INFO API v1.23.5+9ce5071 up
 INFO Waiting up to 30m0s for bootstrapping to complete...
 DEBUG Bootstrap status: complete
 INFO It is now safe to remove the bootstrap resources
@@ -236,7 +254,7 @@ DEBUG                API: 1m21s
 INFO Time elapsed: 9m58s
 ```
 
-* To follow the step of the installation progress, open another terminal, then ssh to `10.3.48.100` with your login, and access the bastion with ssh once it is properly deployed.
+* To follow the step of the installation progress, open another terminal, then ssh to `10.3.48.100`.
 
 ```sh
 ssh root@10.3.48.100
