@@ -4,13 +4,13 @@ This is a limited documentation of the `.tfvar` file. You can find a complete de
 ## 1) PowerVC credential details
 
 ```text
-auth_url                    = "https://10.3.47.2:5000/v3/"   # hostname of PowerVC instance, not to be changed
-user_name                   = "powervc-login-user-name"       # Provided by Techzone
-password                    = "powervc-login-user-password"   # Provided by Techzone
-tenant_name                 = "radardemo" 
-domain_name                 = "Default"
+auth_url                    = "https://10.3.47.2:5000/v3/"    # hostname of PowerVC instance, not to be changed
+user_name                   = "powervc_login_user_name"       # Provided by Techzone
+password                    = "powervc_login_user_password"   # Provided by Techzone
+tenant_name                 = "radardemo"                     # PowerVC project name, not to be changed
+domain_name                 = "Default"                       # PowerVC domain name, not to be changed
 
-network_name                = "RadarDemo"
+network_name                = "RadarDemo"                     # PowerVC Network, not to be changed
 ````
 
 ## 2) Openshift Cluster Details
@@ -21,9 +21,9 @@ The instance_type parameter and image IDs have to be found in those available in
 ### OpenShift Cluster Details
 #
 bastion                     = {instance_type    = "bastion",   image_id    = "bb9dc408-ffa4-4ea0-ba1b-0f7b4c2975f3", fixed_ip_v4 = "10.3.48.100"}
-bootstrap                   = {instance_type    = "master",    image_id    = "8d20f462-260f-4715-9b95-6a63aad698e3",  "count"   = 1, fixed_ips = ["10.3.48.19"]}
-master                      = {instance_type    = "master",    image_id    = "8d20f462-260f-4715-9b95-6a63aad698e3",  "count"   = 3, fixed_ips = ["10.3.48.10", "10.3.48.11", "10.3.48.12"]}
-worker                      = {instance_type    = "worker",    image_id    = "8d20f462-260f-4715-9b95-6a63aad698e3",  "count"   = 3, fixed_ips = ["10.3.48.13", "10.3.48.14", "10.3.48.15"]}
+bootstrap                   = {instance_type    = "master",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 1, fixed_ips = ["10.3.48.19"]}
+master                      = {instance_type    = "master",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 3, fixed_ips = ["10.3.48.10", "10.3.48.11", "10.3.48.12"]}
+worker                      = {instance_type    = "worker",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 3, fixed_ips = ["10.3.48.13", "10.3.48.14", "10.3.48.15"]}
 ```
 
 * The `instance_type` must be chosen within the compute templates name available. Each template provides a certain amount of CPU and memory resources -> Select **Compute templates** in the left pane, it gives the provisionning of the VM.
@@ -53,21 +53,25 @@ adresses accessible through our networks security equipments.
 An example for the masters :
 
 ```text
-master = {instance_type    = "master",    image_id    = "8d20f462-260f-4715-9b95-6a63aad698e3",  "count"   = 3, fixed_ips = ["10.3.48.10", "10.3.48.11", "10.3.48.12"]}
+master = {instance_type    = "master",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 3, fixed_ips = ["10.3.48.10", "10.3.48.11", "10.3.48.12"]}
 ```
 
 Do not change the or `instace_type`, `image_id` or increase the `count` since it could affect the deployment of your cluster. The resources have been carved to fit the demo systems.
 
 ## 3) Openshift level
 
-The level of of product is customized with the following *tarball* fields. You do not have to change anything, they have been adapted for Openshift 4.8.
+The level of of product is customized with the following *tarball* fields. You do not have to change anything, they have been adapted for Openshift 4.10.11
 
 ```text
 ### OpenShift Installation Details
 
-openshift_install_tarball   = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/stable-4.8/openshift-install-linux.tar.gz"
-openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/stable-4.8/openshift-client-linux.tar.gz"
-pull_secret_file            = "data/pull-secret.txt"
+openshift_install_tarball   = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.11/openshift-install-linux.tar.gz"
+openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.11/openshift-client-linux.tar.gz"
+```
+../..
+
+```
+release_image_override     = "quay.io/openshift-release-dev/ocp-release:4.10.11-ppc64le"
 ```
 
 It matches the level of CoreOS image selected in the previous steps.
