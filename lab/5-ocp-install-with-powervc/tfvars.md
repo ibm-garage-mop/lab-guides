@@ -1,6 +1,7 @@
 # Parameters in the .tfvars file
 
 This is a limited documentation of the `.tfvar` file. You can find a complete descrition of the tfvar parameters at [The PowerVM upi github repo](https://github.com/ocp-power-automation/ocp4-upi-powervm/blob/master/docs/var.tfvars-doc.md).
+
 ## 1) PowerVC credential details
 
 ```text
@@ -60,7 +61,7 @@ Do not change the or `instace_type`, `image_id` or increase the `count` since it
 
 ## 3) Openshift level
 
-The level of of product is customized with the following *tarball* fields. You do not have to change anything, they have been adapted for Openshift 4.10.11
+The level of product is customized with the following *tarball* fields. You do not have to change anything, they have been adapted for Openshift 4.10.11
 
 ```text
 ### OpenShift Installation Details
@@ -68,10 +69,13 @@ The level of of product is customized with the following *tarball* fields. You d
 openshift_install_tarball   = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.11/openshift-install-linux.tar.gz"
 openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.11/openshift-client-linux.tar.gz"
 ```
+
 ../..
 
-```
+```text
+
 release_image_override     = "quay.io/openshift-release-dev/ocp-release:4.10.11-ppc64le"
+
 ```
 
 It matches the level of CoreOS image selected in the previous steps.
