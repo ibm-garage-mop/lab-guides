@@ -101,3 +101,5 @@ The NodeJS application requires the credentials to connect to the MongoDB databa
 Now you should be able to use the application. You can see that your NodeJS chat application is successfully connected to the MongoDB instance and the application is accessible via an http url.
 
 This conclude this hands-on lab.
+
+[\[Next-Page\] Deploy a multi-tier web application - part 2](https://github.com/ibm-garage-mop/lab-guides/blob/master/lab/4-inspect-running-application/inspect-running-application.md)
