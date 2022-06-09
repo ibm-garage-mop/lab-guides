@@ -117,4 +117,4 @@ This conclude the first part of the hands-on lab.
 
 You have successfully deployed a container built by a user from an external public container registry on your OpenShift cluster.
 
-[Build and deploy a container from a Dockerfile](https://github.com/ibm-garage-mop/lab-guides/blob/master/lab/2-build-container-from-Dockerfile/build-container-from-Dockerfile.md)
+[\[Build and deploy a container from a Dockerfile\]](https://github.com/ibm-garage-mop/lab-guides/blob/master/lab/2-build-container-from-Dockerfile/build-container-from-Dockerfile.md)
