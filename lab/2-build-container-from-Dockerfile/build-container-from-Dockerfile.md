@@ -94,3 +94,5 @@ There are 2 Builds in complete status, click on `View logs` to see the log strea
 ![image](images/13.png)
 
 Check the new website deployed. You may need to refresh your browser cache to see the updated content (The headings of the website should be displayed in blue).
+
+[\[Next-Page\] Deploy a multi-tier web application - part 1](https://github.com/ibm-garage-mop/lab-guides/blob/master/lab/3-deploy-multi-tier-web-application/deploy-multi-tier-web-application.md)
