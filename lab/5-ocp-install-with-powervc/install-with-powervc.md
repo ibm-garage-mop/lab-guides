@@ -128,8 +128,17 @@ Do you want to perform these actions?
   Only 'yes' will be accepted to approve.
 ```
 
+If you receive an error similar to the output below, make you you ran the `terraform init` in one of the steps above.
+Then restart with the `apply`.
 
-
+```
+Error: Module not installed
+│
+│   on ocp.tf line 42:
+│   42: module "bastion" {
+│
+│ This module is not yet installed. Run "terraform init" to install all modules required by this configuration.
+```
 The terraform script starts creating the VMs as specified in the demo.tfvars file.
 
 ## 2) Monitoring the installation
