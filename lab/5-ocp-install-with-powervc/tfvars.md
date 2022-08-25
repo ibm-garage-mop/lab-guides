@@ -6,8 +6,8 @@ This is a limited documentation of the `.tfvar` file. You can find a complete de
 
 ```text
 auth_url                    = "https://10.3.47.1:5000/v3/"    # hostname of PowerVC instance, not to be changed
-user_name                   = "powervc_login_user_name"       # Provided by Techzone
-password                    = "powervc_login_user_password"   # Provided by Techzone
+user_name                   = "powervc_login_user_name"       # <<<<<<<<<<<<< Provided by Techzone >>>>>>>>>>>>>>
+password                    = "powervc_login_user_password"   # <<<<<<<<<<<<< Provided by Techzone >>>>>>>>>>>>>>
 tenant_name                 = "radardemo"                     # PowerVC project name, not to be changed
 domain_name                 = "Default"                       # PowerVC domain name, not to be changed
 
