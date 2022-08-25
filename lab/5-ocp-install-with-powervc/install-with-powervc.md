@@ -375,28 +375,8 @@ The Openshift cluster's console shows up like:
 
 ![image](images/ocp-console.png)
 
-## 4) Extra final step, remove the bootstrap node
 
-### a) Edit the tfvar file
-
-Edit the tfvar file and change the bootstrap count from `1` to `0` :
-
-```text
-bootstrap = {instance_type = "master", image_id = "8d20f462-260f-4715-9b95-6a63aad698e3", "count" = 0, fixed_ips = ["10.3.48.19"]}
-```
-
-### b) Re-run the terraform script
-
-```sh
-terraform apply -var-file paris.tfvars
-```
-
-Answer 'yes' when prompted
-
-After the bootstrap node gets properly removed, the [ha_proxy](<http://haproxy.paris.edu.ihost.com:9007>) will show the following :
-![ha_proxy with no bootstrap](images/no-bootstrap.png)
-
-You've completed the demo lab !
+You have now completed the demo lab !
 
 > You can find a complete documentation of the Terraform deployment at the [ocp4-upi-powervm
  github](https://github.com/ocp-power-automation/ocp4-upi-powervm#readme)
