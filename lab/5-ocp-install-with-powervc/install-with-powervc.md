@@ -358,7 +358,7 @@ worker_ips = [
 ```
 
 You can now login with kubeadmin to the cluster's console : [https://console-openshift-console.apps.paris.edu.ihost.com](
-https://console-openshift-console.apps.paris.edu.ihost.com), using the password provided above.
+https://console-openshift-console.apps.paris.edu.ihost.com), using the password provided in the out from `openshift-install wait-for install-complete`, above.
 
 You have to accept the security alert **twice** because the cluster is using a self-signed certificate.
 The example below is for Firefox :
