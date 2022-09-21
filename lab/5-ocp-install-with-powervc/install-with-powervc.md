@@ -71,6 +71,19 @@ Initialize the terraform plugins and modules for you environment :
 terraform init -plugin-dir /usr/local/terraform/
 ```
 
+Output :
+```
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+```
+
 Both the Openshift pull-secret and the ssh key-pair have to be copied in the `ocp4-upi-powervm/data` directory.
 
 Your personnal Openshift pull secret, is available at :
