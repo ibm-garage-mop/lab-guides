@@ -16,6 +16,7 @@ user_name                   = "powervc_login_user_name"       # <<<<<<<<<<<<< Pr
 password                    = "powervc_login_user_password"   # <<<<<<<<<<<<< Provided by Techzone >>>>>>>>>>>>>>
 tenant_name                 = "radardemo"                     # PowerVC project name, not to be changed
 domain_name                 = "Default"                       # PowerVC domain name, not to be changed
+openstack_availability_zone = "Radar"                         # PowerVC hostgroup name, not to be changed
 
 network_name                = "RadarDemo"                     # PowerVC Network, not to be changed
 ````
