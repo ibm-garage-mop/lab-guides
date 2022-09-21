@@ -28,7 +28,7 @@ The instance_type parameter and image IDs have to be found in those available in
 ```text
 ### OpenShift Cluster Details
 #
-bastion                     = {instance_type    = "bastion",   image_id    = "bb9dc408-ffa4-4ea0-ba1b-0f7b4c2975f3", fixed_ip_v4 = "10.3.48.100"}
+bastion                     = {instance_type    = "bastion",   image_id    = "e0b3b542-9342-4d73-b416-14debd7f77c4", fixed_ip_v4 = "10.3.48.100"}
 bootstrap                   = {instance_type    = "master",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 1, fixed_ips = ["10.3.48.19"]}
 master                      = {instance_type    = "master",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 3, fixed_ips = ["10.3.48.10", "10.3.48.11", "10.3.48.12"]}
 worker                      = {instance_type    = "worker",    image_id    = "6f0a5409-7d16-4e74-843f-c670070831f8",  "count"   = 3, fixed_ips = ["10.3.48.13", "10.3.48.14", "10.3.48.15"]}
