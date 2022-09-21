@@ -2,6 +2,12 @@
 
 This is a limited documentation of the `.tfvar` file. You can find a complete descrition of the tfvar parameters at [The PowerVM upi github repo](https://github.com/ocp-power-automation/ocp4-upi-powervm/blob/master/docs/var.tfvars-doc.md).
 
+Edit the `paris.tfvars` file and change the values as described below.
+
+```sh
+vi paris.tfvars
+```
+
 ## 1) PowerVC credential details
 
 ```text
