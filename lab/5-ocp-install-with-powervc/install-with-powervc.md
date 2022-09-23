@@ -86,6 +86,12 @@ commands will detect it and remind you to do so if necessary.
 
 Both the Openshift pull-secret and the ssh key-pair have to be copied in the `ocp4-upi-powervm/data` directory.
 
+Edit the `pull-secret.txt` file and insert you personnal pull secret:
+
+```sh
+vi ~/ocp4-upi-powervm/data/pull-secret.txt
+```
+
 Your personnal Openshift pull secret, is available at :
 
 [https://cloud.redhat.com/openshift/install/power/user-provisioned](https://console.redhat.com/openshift/install/power/user-provisioned)
@@ -94,9 +100,7 @@ Your personnal Openshift pull secret, is available at :
 
 Once copied, you can insert it in the `data/pull-secret.txt` file.
 
-```sh
-vi ~/ocp4-upi-powervm/data/pull-secret.txt
-```
+
 
 Create an ssh key, and copy it into the `data` directory
 
