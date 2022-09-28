@@ -68,21 +68,13 @@ Do not change the or `instace_type`, `image_id` or increase the `count` since it
 
 ## 3) Openshift level
 
-The level of product is customized with the following *tarball* fields. You do not have to change anything, they have been adapted for Openshift 4.10.11
+The level of product is customized with the following *tarball* fields. You do not have to change anything, they have been adapted for a chosen level :
 
 ```text
 ### OpenShift Installation Details
 
-openshift_install_tarball   = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.11/openshift-install-linux.tar.gz"
-openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.11/openshift-client-linux.tar.gz"
-```
-
-../..
-
-```text
-
-release_image_override     = "quay.io/openshift-release-dev/ocp-release:4.10.11-ppc64le"
-
+openshift_install_tarball   = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.32/openshift-install-linux.tar.gz"
+openshift_client_tarball    = "https://mirror.openshift.com/pub/openshift-v4/ppc64le/clients/ocp/4.10.32/openshift-client-linux.tar.gz"
 ```
 
 It matches the level of CoreOS image selected in the previous steps.
